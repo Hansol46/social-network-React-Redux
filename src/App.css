@@ -1,0 +1,15 @@
+.app__wrapper {
+  max-width: 1920px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 2fr 10fr;
+  grid-template-areas:
+    "x x"
+    "y z ";
+}
+.app__wrapper__content {
+  grid-area: z;
+  background-color: green;
+}
