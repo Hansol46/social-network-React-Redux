@@ -8,8 +8,9 @@ function Navbar() {
       <ul>
         <li className={ss.item}> <NavLink to="/profile" activeClassName={ss.activeLink}> Profile</NavLink></li>
         <li className={`${ss.item} ${ss.active}`}><NavLink to="/message" activeClassName={ss.activeLink}> Message</NavLink> </li>
-        <li className={ss.item}> <NavLink to="/news" activeClassName={ss.activeLink}>News</NavLink> </li>
-        <li className={ss.item}> <NavLink to="/music" activeClassName={ss.activeLink}>Music</NavLink> </li>
+        <li className={ss.item}> <NavLink to="/news" activeClassName={ss.activeLink}> News</NavLink> </li>
+        <li className={ss.item}> <NavLink to="/music" activeClassName={ss.activeLink}> Music</NavLink> </li>
+        <li className={ss.item}> <NavLink to="/users" activeClassName={ss.activeLink}> All users</NavLink> </li>
         <li className={ss.item}> <NavLink to="/settings" activeClassName={ss.activeLink}> Settings</NavLink> </li>
         <li className={`${ss.item} ${ss.friends}`}> 
           <NavLink to="/friends" activeClassName={ss.activeLink}> Friends Online :</NavLink>
@@ -24,6 +25,9 @@ function Navbar() {
                             <span> Any</span> 
                               </div>
                                 </li>
+          
+
+        
       </ul>
     </nav>
   );
