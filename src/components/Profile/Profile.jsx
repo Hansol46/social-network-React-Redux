@@ -1,22 +1,27 @@
 import React from "react";
 import ss from "./Profile.module.sass";
-import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
+import { Redirect } from "react-router-dom";
+import { AuthRedirect } from "../../hoc/Redirect";
 
 // shift+alt+f
 function Profile(props) {
+  
+
+
+  
+  
+
+
+
 
 
   return (
     <section className={ss.content}>
 
-      <ProfileInfo />
-      <MyPostsContainer store={props.store}
-      // postData = {props.localState.postData} 
-      //   dispatch={props.dispatch}
-
-            />
+      <ProfileInfo profile={props.profile}/>
+      <MyPostsContainer store={props.store}/>
             
     </section>
   );

@@ -1,26 +1,47 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import Users from './Users';
-import { setUsersAC, unfollowAC, followAC } from '../../redux/users-reducer';
+import React from "react";
+import { connect } from "react-redux";
+import { setUsers, toggleIsFetching, getUsersThunkCreator,followEnter, unfollowEnter } from "../../redux/users-reducer";
+import Users from "./Users";
+import Loader from "./Loader/Loader";
+import { usersAPI } from "../../api/api";
+import { compose } from "redux";
 
-function mapStateToProps (state) {
-    return {
-        usersData: state.usersPage.usersData,    
-    }
+class UsersContainer extends React.Component {
+  
+  componentDidMount = () => {
+    this.props.getUsersThunkCreator();
+  };
+
+
+  render() {
+    return (
+      <>
+        {this.props.isFetching ? <Loader /> : null}
+
+        <Users
+          usersData={this.props.usersData}
+          unfollowEnter={this.props.unfollowEnter}
+          followEnter={this.props.followEnter}
+        />
+        ;
+      </>
+    );
+  }
 }
 
-function mapDispatchToProps(dispatch) {
-    return {
-        follow: (userId) => {
-            dispatch(followAC(userId));
-        },
-        unfollow: (userId) => {
-            dispatch(unfollowAC(userId));
-        },
-        setUsers: (usersData) => {
-            dispatch(setUsersAC(usersData));
-        }
-    }
+function mapStateToProps(state) {
+  return {
+    usersData: state.usersPage.usersData,
+    isFetching: state.usersPage.isFetching,
+  };
 }
 
-export default connect (mapStateToProps, mapDispatchToProps) (Users);
+
+
+
+export default connect(mapStateToProps, 
+  { unfollowEnter, followEnter,
+      setUsers, toggleIsFetching, 
+        getUsersThunkCreator, })(UsersContainer); 
+// вместо функции диспатча используем объект
+// из редъюсора переменовываем все АС и импортируем сюда 

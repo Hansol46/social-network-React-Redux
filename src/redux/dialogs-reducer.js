@@ -1,4 +1,4 @@
-const UPDATE_MEW_MESS_TEXT = 'UPDATE-NEW-MESS-TEXT';
+const UPDATE_NEW_MESS_TEXT = 'UPDATE-NEW-MESS-TEXT';
 const ADD_MESS = 'ADD-MESS';
 
 let initialState = {
@@ -15,9 +15,9 @@ let initialState = {
   messageData : [
       {id: 1, text: 'Hi, man'},
       {id: 2, text: 'how are you?'},
-      {id: 2, text: 'Yo?'},
-      {id: 2, text: 'go way?'},
-      {id: 2, text: 'pls, touch you phone!'}
+      {id: 3, text: 'Yo?'},
+      {id: 4, text: 'go way?'},
+      {id: 5, text: 'pls, touch you phone!'}
     ],
 
   newMessText: " "
@@ -35,7 +35,7 @@ const dialogsReducer = (state = initialState, action) =>{
         messageData: [...state.messageData, newMess]
       };
     };
-    case UPDATE_MEW_MESS_TEXT: {
+    case UPDATE_NEW_MESS_TEXT: {
       return {
         ...state,
         newMessText: action.newMess ,
@@ -47,12 +47,8 @@ const dialogsReducer = (state = initialState, action) =>{
 
 }
 
-export const addMessActionCreator = () => {
-    return ({type: ADD_MESS})
-  };
+export const addMess = (messages) => {return ({type: ADD_MESS, messages})};
   
-  export const updateNewMessTextActionCreator = (mess) => {
-    return ({ type: UPDATE_MEW_MESS_TEXT, newMess: mess});
-  };
+export const updateNewMessText = (mess) => {return ({ type: UPDATE_NEW_MESS_TEXT, newMess: mess});};
   
 export default dialogsReducer;

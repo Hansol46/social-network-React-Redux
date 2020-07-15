@@ -4,7 +4,6 @@ import ss from './../Header/Dialogs.module.sass';
 
 
 
-
 function DialogsMessage (props) {
 
     return (

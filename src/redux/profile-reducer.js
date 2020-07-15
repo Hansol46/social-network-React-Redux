@@ -1,6 +1,8 @@
+import { usersAPI } from "../api/api";
+
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
 const ADD_POST = 'ADD_POST';
-
+const SET_USER_PROFILE = 'SET_USER_PROFILE';
 
 let initialState = {
 
@@ -12,7 +14,8 @@ let initialState = {
       {id: 5, name: "Max Konev", message: "you best man! p.s.:sarcasm"}
     ],
 
-  newPostText: " "
+  newPostText: " ",
+  profile: null,
   
   };
 
@@ -36,18 +39,27 @@ const profileReducer = (state = initialState, action ) => {
           newPostText: action.newText,
         };
       }
+      case SET_USER_PROFILE: {
+        return {...state, profile: action.profile}
+      }
       default:
         return state;
     }
 
 }
 
-export const addPostActionCreator = () => {
-    return ({type: ADD_POST})
-  };
+export const addPost = () => ({type: ADD_POST});
   
-export const updateNewPostTextActionCreator = (text) =>{
-  return {type: UPDATE_NEW_POST_TEXT, newText: text}
-};
-  
+export const updateNewPostText = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text});
+
+export const setUserProfile = (profile) => ({type:SET_USER_PROFILE, profile});
+
+
+export const getUserProfile = (userId) => {
+  return (dispatch) => {
+    usersAPI.profileUserId(userId).then((response) => {
+    dispatch(setUserProfile(response.data)); // нам теперь нужно законектить и отправить все в нашу классовую компоненту   
+    })
+  }
+}
 export default profileReducer;
