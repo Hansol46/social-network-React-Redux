@@ -46,7 +46,6 @@ function Dialogs(props) {
       <div className={ss.dialogs__items}>{dialogsElements}</div>
 
       <div className={ss.dialog__message}>
-        {dialogMessages}
         <div>
           <TextAreaContainer store={props.store}
           />{" "}

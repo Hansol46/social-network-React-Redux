@@ -1,6 +1,6 @@
 import React from 'react';
 import ss from './Header.module.sass';
-import { NavLink } from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
 
 function Header(props) {
     return (
@@ -12,7 +12,7 @@ function Header(props) {
     
 
         <div className={ss.loginBlock}>
-            {props.isAuth ? props.login : <NavLink to={'/login'}> Login </NavLink> }
+             {props.isAuth ? <div>User name: {props.login} <button onClick={props.logout}> Logout</button> </div>  : <NavLink to={'/login'}> Login </NavLink> }
             
         </div>
     </header>

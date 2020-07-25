@@ -21,7 +21,7 @@ if(!props.profile) {//         ! - отрицание, то есть если п
       <p>Name: {props.profile.fullName}</p>
       <p>Live: New-York</p>
       <p>About me: {props.profile.aboutMe}</p>
-      <ProfileStatus status={'Hello, my friends'}/>
+      <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
 
 
       </div>
