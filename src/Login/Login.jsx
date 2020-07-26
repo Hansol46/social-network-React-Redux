@@ -4,8 +4,9 @@ import { Input } from "../components/FormsControls/FormsControls";
 import { required } from "../utils/validators/validator";
 import { connect } from "react-redux";
 import {login} from '../redux/auth-reducer'
-import { AuthRedirect } from "../hoc/Redirect";
 import { Redirect } from "react-router-dom";
+import ss from './Login.module.sass'
+
 function LoginForm(props) {
   return (
     <form onSubmit={props.handleSubmit}>
@@ -30,13 +31,14 @@ function LoginForm(props) {
         <Field type={"checkbox"} component={Input} name={"rememberMe"} /> remember me 
         
       </div>
+      {/* {props.error ? <div className={ss.blockError}>{props.error}</div> : null}  */}
       <div>
         <button> Login </button>
       </div>
     </form>
   );
 }
-
+// --------- its HOC ----------
 const LoginReduxForm = reduxForm({
   // необходимо использовать уникальное имя
   form: "login",

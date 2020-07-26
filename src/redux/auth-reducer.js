@@ -1,4 +1,5 @@
 import { usersAPI } from "../api/api";
+import { stopSubmit } from "redux-form";
 
 const SET_USER_DATA = 'SET_USER_DATA'; // установить пользовательские данные 
 
@@ -44,6 +45,10 @@ export const login = (email, password, rememberMe) => {
         usersAPI.login(email, password, rememberMe).then( response => {
             if (response.data.resultCode == 0) {
                 dispatch(authentication());
+            }
+            else {
+                let messages = response.data.messages.length > 0 ? response.data.messages[0] : "Some error!";
+                dispatch(stopSubmit('login', {email: messages}));
             }
           });
     }
