@@ -22,17 +22,8 @@ function App(props) {
 
         <div className="app__wrapper__content">
 
-          <Route path='/message' render={() => <Dialogs store={props.store}
-            // localState = {props.appState.dialogsPage} dispatch={props.dispatch}
-              />}
-              />
-
-          <Route path='/profile/:userId?' render={() => <ProfileContainer store={props.store}
-            // localState = {props.appState.profilePage} 
-            // dispatch={props.dispatch}
-              />}
-                />
-
+          <Route path='/message' render={() => <Dialogs store={props.store}/>}/>
+          <Route path='/profile/:userId?' render={() => <ProfileContainer store={props.store}/>}/>
           <Route path='/news' render={() => <News />} />
           <Route path='/music' render={() => <Music store={props.store}/>} />
           <Route path='/settings' render={() => <Settings />} />

@@ -3,8 +3,7 @@ import { connect } from "react-redux";
 import { setUsers, toggleIsFetching, getUsersThunkCreator,followEnter, unfollowEnter } from "../../redux/users-reducer";
 import Users from "./Users";
 import Loader from "./Loader/Loader";
-import { usersAPI } from "../../api/api";
-import { compose } from "redux";
+import {getUsersSelector, getIsFetching} from '../../redux/selectors/users-selectors';
 
 class UsersContainer extends React.Component {
   
@@ -29,12 +28,19 @@ class UsersContainer extends React.Component {
   }
 }
 
+// function mapStateToProps(state) {
+//   return {
+//     usersData: state.usersPage.usersData,
+//     isFetching: state.usersPage.isFetching,
+//   };
+// }
 function mapStateToProps(state) {
   return {
-    usersData: state.usersPage.usersData,
-    isFetching: state.usersPage.isFetching,
+    usersData: getUsersSelector(state),
+    isFetching: getIsFetching(state),
   };
 }
+
 
 
 

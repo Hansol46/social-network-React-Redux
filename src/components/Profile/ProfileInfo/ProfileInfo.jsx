@@ -2,6 +2,7 @@ import React from "react";
 import ss from "./ProfileInfo.module.sass";
 import Loader from "../../Users/Loader/Loader";
 import ProfileStatus from './ProfileStatus';
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 // shift+alt+f
 function ProfileInfo(props) {
@@ -21,7 +22,7 @@ if(!props.profile) {//         ! - отрицание, то есть если п
       <p>Name: {props.profile.fullName}</p>
       <p>Live: New-York</p>
       <p>About me: {props.profile.aboutMe}</p>
-      <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+      <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
 
 
       </div>
