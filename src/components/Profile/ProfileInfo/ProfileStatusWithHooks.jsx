@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useEffect } from "react";
 
 
 
@@ -7,6 +8,10 @@ function ProfileStatusWithHooks(props) {
 
     let [editMode, setEditMode] = useState(false); //destructuring  
     let [status, setStatus] = useState(props.status);
+
+    useEffect( ()=> {
+        setStatus(props.status);
+    }, [props.status])
 
     const activateEditMode = () => {
         setEditMode(true);

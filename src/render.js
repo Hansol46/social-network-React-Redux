@@ -18,9 +18,7 @@ import { Provider } from 'react-redux';
 
     <Provider store={store} >
     
-    <App 
-    // appState={store.getState()}  
-    // dispatch={store.dispatch.bind(store)} 
+    <App
     store={store}
     />
   
